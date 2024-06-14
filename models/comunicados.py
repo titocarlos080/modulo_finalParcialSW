@@ -1,5 +1,5 @@
 from random import randint
-
+import requests
 from odoo.http import request
 from odoo import api, fields, models
 
@@ -33,7 +33,7 @@ class Comunicados(models.Model):
                 'body': body,
             },
         }
-        response = request.post(url, headers=headers, json=data)
+        response = requests.post(url, headers=headers, json=data)
         return response.status_code
 
 
