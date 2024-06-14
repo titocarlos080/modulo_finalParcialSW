@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Vista de árbol -->
+        <record id="view_school_enrollments_tree" model="ir.ui.view">
+            <field name="name">Inscripciones</field>
+            <field name="model">school.enrollment</field>
+            <field name="arch" type="xml">
+                <tree string="Inscripciones" editable="bottom">
+                    
+                    <field name="date" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario -->
+        <record id="view_school_enrollments_form" model="ir.ui.view">
+            <field name="name">Inscripción</field>
+            <field name="model">school.enrollment</field>
+            <field name="arch" type="xml">
+                <form string="Inscripción">
+                    <sheet>
+                        <group>
+                            
+                            <field name="date" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción para la vista de árbol y formulario -->
+        <record id="action_school_enrollments" model="ir.actions.act_window">
+            <field name="name">Inscripciones</field>
+            <field name="res_model">school.enrollment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menú para inscripciones -->
+        <!-- <menuitem name="Inscripciones" id="menu_school_enrollments"
+            parent="menu_school"
+            groups="group_school_user"
+            action="action_school_enrollments"
+        /> -->
+    </data>
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <record id="oe_school_view_form_nivel" model="ir.ui.view">
+        <field name="name">oe.school.nivel.form</field>
+        <field name="model">oe.school.nivel</field>
+        <field name="arch" type="xml">
+            <form string="Nivel">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                        <field name="ciclo"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+        </record>
+
+        <record id="oe_school_view_kanban_nivel" model="ir.ui.view">
+        <field name="name">oe.school.nivel.kanban</field>
+        <field name="model">oe.school.nivel</field>
+        <field name="arch" type="xml">
+            <kanban string="Nivel">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{record.color}">
+                            <div class="oe_kanban_details">
+                                <strong><field name="name"/></strong>
+                                <div><field name="descripcion"/></div>
+                                <div><field name="ciclo"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+        </record>
+
+        <record id="oe_school_view_tree_nivel" model="ir.ui.view">
+        <field name="name">oe.school.nivel.tree</field>
+        <field name="model">oe.school.nivel</field>
+        <field name="arch" type="xml">
+            <tree string="Nivel">
+                <field name="name"/>
+                <field name="descripcion"/>
+                <field name="ciclo"/>
+            </tree>
+        </field>
+        </record>
+
+        
+        <record id="action_hr_materias_nivels_views"
+			model="ir.actions.act_window">
+			<field name="name">Nivel</field>
+			<field name="res_model">oe.school.nivel</field>
+            <field name="view_mode">kanban,tree,form</field>
+		  <field name="view_ids" 
+          eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('oe_school_view_kanban_nivel')}),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('oe_school_view_tree_nivel')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('oe_school_view_form_nivel')})]" />
+        </record>
+        
+        <menuitem name="Niveles" id="menu_school_materias_niveles"
+			parent="menu_school_materias" action="action_hr_materias_nivels_views"
+			groups="group_school_user" />
+        
+    </data>
+</odoo>

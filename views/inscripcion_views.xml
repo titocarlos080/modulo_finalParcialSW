@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <record id="oe_school_view_form_inscripcion" model="ir.ui.view">
+        <field name="name">oe.school.inscripcion.form</field>
+        <field name="model">oe.school.inscripcion</field>
+        <field name="arch" type="xml">
+            <form string="Inscripcion">
+                <sheet>
+                  <group>
+               
+                    <field name="gestion" widget="integer"/>
+                    <field name="descripcion"/>
+                    <field name="student_id"/>
+                    <field name="curso_id"/>
+                </group> 
+                 <div class="oe_title">
+                        <label for="nivel_id"/>
+                        <h2><field name="nivel_id" /></h2>
+                </div>
+                </sheet>
+            </form>
+        </field>
+        </record>
+
+        <record id="oe_school_view_kanban_inscripcion" model="ir.ui.view">
+        <field name="name">oe.school.inscripcion.kanban</field>
+        <field name="model">oe.school.inscripcion</field>
+        <field name="arch" type="xml">
+            <kanban string="Inscripcion">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{record.color}">
+                            <div class="oe_kanban_details">
+                                <strong><field name="gestion"/></strong>
+                                <div><field name="curso_id"/></div>
+                                <div><field name="student_id"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+        </record>
+
+        <record id="oe_school_view_tree_inscripcion" model="ir.ui.view">
+        <field name="name">oe.school.inscripcion.tree</field>
+        <field name="model">oe.school.inscripcion</field>
+        <field name="arch" type="xml">
+            <tree string="Inscripcion">
+             
+                <field name="gestion"/>
+                <field name="descripcion"/>
+                <field name="nivel_id"/>
+                <field name="student_id"/>
+                <field name="curso_id"/>
+            </tree>
+        </field>
+        </record>
+
+        
+        <record id="action_hr_inscripcion_inscripcion_views"
+			model="ir.actions.act_window">
+			<field name="name">Inscripcion</field>
+			<field name="res_model">oe.school.inscripcion</field>
+            <field name="view_mode">kanban,tree,form</field>
+		  <field name="view_ids" 
+          eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('oe_school_view_kanban_inscripcion')}),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('oe_school_view_tree_inscripcion')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('oe_school_view_form_inscripcion')})]" />
+        </record>
+        
+        <menuitem name="Inscripcion" id="menu_school_inscripcion_inscripcion"
+			parent="menu_school_inscripcion" action="action_hr_inscripcion_inscripcion_views"
+			groups="group_school_user" />
+        
+    </data>
+</odoo>

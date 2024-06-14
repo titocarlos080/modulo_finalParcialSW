@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <record id="oe_school_view_form_padre" model="ir.ui.view">
+        <field name="name">oe.school.padre.form</field>
+        <field name="model">oe.school.padre</field>
+        <field name="arch" type="xml">
+            <form string="padre">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="ci"/>
+                        <field name="keynotificaciones"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+        </record>
+
+        <record id="oe_school_view_kanban_padre" model="ir.ui.view">
+        <field name="name">oe.school.padre.kanban</field>
+        <field name="model">oe.school.padre</field>
+        <field name="arch" type="xml">
+            <kanban string="padre">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{record.color}">
+                            <div class="oe_kanban_details">
+                                <strong><field name="name"/></strong>
+                                <div><field name="ci"/></div>
+                               
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+        </record>
+
+        <record id="oe_school_view_tree_padre" model="ir.ui.view">
+        <field name="name">oe.school.padre.tree</field>
+        <field name="model">oe.school.padre</field>
+        <field name="arch" type="xml">
+            <tree string="padre">
+                <field name="name"/>
+                <field name="ci"/>
+            </tree>
+        </field>
+        </record>
+
+        
+        <record id="action_hr_students_padres_views"
+			model="ir.actions.act_window">
+			<field name="name">Padre</field>
+			<field name="res_model">oe.school.padre</field>
+            <field name="view_mode">kanban,tree,form</field>
+		  <field name="view_ids" 
+          eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('oe_school_view_kanban_padre')}),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('oe_school_view_tree_padre')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('oe_school_view_form_padre')})]" />
+        </record>
+        
+        <menuitem name="Padres" id="menu_school_students_padres"
+			parent="menu_school_students" action="action_hr_students_padres_views"
+			groups="group_school_user" />
+        
+    </data>
+</odoo>

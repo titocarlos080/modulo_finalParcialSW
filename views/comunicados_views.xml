@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <record id="oe_school_view_form_comunicados" model="ir.ui.view">
+        <field name="name">oe.school.comunicados.form</field>
+        <field name="model">oe.school.comunicados</field>
+        <field name="arch" type="xml">
+            <form string="comunicados">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                      
+                    </group>
+                </sheet>
+            </form>
+        </field>
+        </record>
+
+        <record id="oe_school_view_kanban_comunicados" model="ir.ui.view">
+        <field name="name">oe.school.comunicados.kanban</field>
+        <field name="model">oe.school.comunicados</field>
+        <field name="arch" type="xml">
+            <kanban string="comunicados">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{record.color}">
+                            <div class="oe_kanban_details">
+                                <strong><field name="name"/></strong>
+                                <div><field name="descripcion"/></div>
+                             
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+        </record>
+
+        <record id="oe_school_view_tree_comunicados" model="ir.ui.view">
+        <field name="name">oe.school.comunicados.tree</field>
+        <field name="model">oe.school.comunicados</field>
+        <field name="arch" type="xml">
+            <tree string="comunicados">
+                <field name="name"/>
+                <field name="descripcion"/>
+              
+            </tree>
+        </field>
+        </record>
+
+        
+        <record id="action_hr_materias_comunicadoss_views"
+			model="ir.actions.act_window">
+			<field name="name">comunicados</field>
+			<field name="res_model">oe.school.comunicados</field>
+            <field name="view_mode">kanban,tree,form</field>
+		  <field name="view_ids" 
+          eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('oe_school_view_kanban_comunicados')}),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('oe_school_view_tree_comunicados')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('oe_school_view_form_comunicados')})]" />
+        </record>
+        
+        <menuitem name="comunicados" id="menu_school_materias_comunicados"
+			parent="menu_school_materias" action="action_hr_materias_comunicadoss_views"
+			groups="group_school_user" />
+        
+    </data>
+</odoo>

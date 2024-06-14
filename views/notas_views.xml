@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <record id="oe_school_view_form_notas" model="ir.ui.view">
+        <field name="name">oe.school.notas.form</field>
+        <field name="model">oe.school.notas</field>
+        <field name="arch" type="xml">
+            <form string="Insercion_notas">
+                <sheet>
+                  <group>
+                <field name="codigo"/>
+                <field name="name"/>
+                <field name="descripcion"/>
+                <field name="student_id"/>
+                <field name="materia_id"/>
+                <field name="gestion" widget="integer"/>
+                <field name="nota"/>
+                </group> 
+                </sheet>
+            </form>
+        </field>
+        </record>
+
+        <record id="oe_school_view_tree_notas" model="ir.ui.view">
+        <field name="name">oe.school.notas.tree</field>
+        <field name="model">oe.school.notas</field>
+        <field name="arch" type="xml">
+            <tree string="Insercion_notas">
+             
+            <field name="codigo"/>
+            <field name="name"/>
+            <field name="student_id"/>
+            <field name="materia_id"/>
+            <field name="gestion"/>
+            <field name="nota"/>
+            </tree>
+        </field>
+        </record>
+
+        
+        <record id="action_hr_inscripcion_notas_views"
+			model="ir.actions.act_window">
+			<field name="name">Insercionnotas</field>
+			<field name="res_model">oe.school.notas</field>
+            <field name="view_mode">tree,form</field>
+		  <field name="view_ids" 
+          eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('oe_school_view_tree_notas')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('oe_school_view_form_notas')})]" />
+        </record>
+        
+        <menuitem name="Insertar Notas" id="menu_school_inscripcion_notas"
+			parent="menu_school_inscripcion" action="action_hr_inscripcion_notas_views"
+			groups="group_school_user" />
+        
+    </data>
+</odoo>

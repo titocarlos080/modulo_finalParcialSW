@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem name="Colegio"
+        id="menu_school"
+        groups="group_school_user"
+        web_icon="de_school,static/description/icon.png"
+        sequence="1" />
+    <!-- <menuitem name="Inscripciones" id="menu_school_enrollments"
+        parent="menu_school"
+        sequence="78"
+        groups="group_school_user"
+    /> -->
+
+    <menuitem name="Profesores" id="menu_school_teachers"
+        parent="menu_school"
+        sequence="20"
+        groups="group_school_user" />
+
+
+    <menuitem name="Estudiantes" id="menu_school_students"
+        parent="menu_school"
+        sequence="30"
+        groups="group_school_user" />
+
+
+    <menuitem name="Cursos" id="menu_school_courses"
+        parent="menu_school"
+        sequence="40"
+        groups="group_school_user" />
+
+
+    <menuitem name="Horarios" id="menu_school_timetable"
+        parent="menu_school"
+        sequence="50"
+        groups="group_school_user" />
+
+    <menuitem name="Materias" id="menu_school_materias"
+     parent="menu_school" sequence="60"
+        groups="group_school_user" />
+
+    <menuitem name="Inscripcion new" id="menu_school_inscripcion"
+        parent="menu_school"
+        sequence="80"
+        groups="group_school_user"
+    />
+
+    <menuitem name="Configuraciones" id="menu_school_config"
+        parent="menu_school"
+        sequence="70"
+        groups="group_school_user" />
+
+
+</odoo>

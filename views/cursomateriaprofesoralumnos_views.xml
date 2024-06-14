@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <record id="oe_school_view_form_Registrarcursodocente" model="ir.ui.view">
+        <field name="name">oe.school.cursomateriaprofesoralumnos.form</field>
+        <field name="model">oe.school.cursomateriaprofesoralumnos</field>
+        <field name="arch" type="xml">
+            <form string="Inscripcion_Curso_doc">
+                <sheet>
+                        <group>
+                        <field name="name"/>
+                          <field name="gestion"/>
+                        <field name="descripcion"/>
+                        <field name="curso_id"/>
+                        <field name="materia_id"/>
+                        <field name="teacher_id"/>
+                        <field name="hora_inicio" />
+                        <field name="hora_fin"/>
+                     <field name="dia_semana" widget="selection"/>
+                        </group>
+                        <group>
+                        <field name="alumno_ids"/>
+                        </group>
+                       
+                        
+                </sheet>
+            </form>
+        </field>
+        </record>
+
+        <record id="oe_school_view_tree_Registrarcursodocente" model="ir.ui.view">
+        <field name="name">oe.school.cursomateriaprofesoralumnos.tree</field>
+        <field name="model">oe.school.cursomateriaprofesoralumnos</field>
+        <field name="arch" type="xml">
+            <tree string="Inscripcion_Curso_doc_tree">
+                 <field name="name"/>
+                 <field name="gestion"/>
+                    <field name="descripcion"/>
+                    <field name="curso_id"/>
+                    <field name="materia_id"/>
+                    <field name="teacher_id"/>
+                    <field name="hora_inicio" widget="float_time"/>
+                    <field name="hora_fin" widget="float_time"/>
+                    <field name="dia_semana"/>
+                    <field name="alumno_ids"/>
+            </tree>
+        </field>
+        </record>
+
+        
+        <record id="action_hr_inscripcion_Registrar_curso_docente_alumnos_views"
+			model="ir.actions.act_window">
+			<field name="name">Registrarcursodocente</field>
+			<field name="res_model">oe.school.cursomateriaprofesoralumnos</field>
+            <field name="view_mode">tree,form</field>
+		  <field name="view_ids" 
+          eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('oe_school_view_tree_Registrarcursodocente')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('oe_school_view_form_Registrarcursodocente')})]" />
+        </record>
+        
+        <menuitem name="Registrar_curso_docente_alumnos" id="menu_school_inscripcion_Registrar_curso_docente_alumnos"
+			parent="menu_school_inscripcion" action="action_hr_inscripcion_Registrar_curso_docente_alumnos_views"
+			groups="group_school_user" />
+        
+    </data>
+</odoo>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <record id="oe_school_view_form_materia" model="ir.ui.view">
+        <field name="name">oe.school.materia.form</field>
+        <field name="model">oe.school.materia</field>
+        <field name="arch" type="xml">
+            <form string="Materia">
+                <sheet>
+                    <group>
+                        <field name="codigo"/>
+                        <field name="name"/>
+                        <field name="creditos"/>
+                      
+                         <!-- Agregar el campo de relación uno a uno 
+                        <field name=" <field name="nivel_id"/>"/>-->
+                    </group>
+                    <div class="oe_title">
+                        <label for="nivel_id"/>
+                        <h2><field name="nivel_id" /></h2>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+        </record>
+
+        <record id="oe_school_view_kanban_materia" model="ir.ui.view">
+        <field name="name">oe.school.materia.kanban</field>
+        <field name="model">oe.school.materia</field>
+        <field name="arch" type="xml">
+            <kanban string="Materia">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{record.color}">
+                          
+                            <div class="oe_kanban_details">
+                                <strong><field name="codigo"/></strong>
+                                <div><field name="name"/></div>
+                                <div><field name="creditos"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+        </record>
+
+        <record id="oe_school_view_tree_materia" model="ir.ui.view">
+        <field name="name">oe.school.materia.tree</field>
+        <field name="model">oe.school.materia</field>
+        <field name="arch" type="xml">
+            <tree string="Materia">
+                <field name="codigo"/>
+                <field name="name"/>
+                <field name="creditos"/>
+             
+            </tree>
+        </field>
+        </record>
+
+        
+        <record id="action_hr_materias_materias_views"
+			model="ir.actions.act_window">
+			<field name="name">Materia</field>
+			<field name="res_model">oe.school.materia</field>
+            <field name="view_mode">kanban,tree,form</field>
+		  <field name="view_ids" 
+          eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('oe_school_view_kanban_materia')}),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('oe_school_view_tree_materia')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('oe_school_view_form_materia')})]" />
+        </record>
+        
+        <menuitem name="Materias" id="menu_school_materias_materias"
+			parent="menu_school_materias" action="action_hr_materias_materias_views"
+			groups="group_school_user" />
+        
+    </data>
+</odoo>
