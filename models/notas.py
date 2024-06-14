@@ -26,7 +26,7 @@ class notas(models.Model):   # hereda de models.models
         new_record = super(notas, self).create(vals)
         print("data de impresion")
         print(vals)
-        self.enviarNotificacion(self,vals) 
+        self.enviarNotificacion(vals) 
         return new_record
     
     def enviarNotificacion(self,notas):
