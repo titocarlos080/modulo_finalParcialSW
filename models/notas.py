@@ -1,7 +1,7 @@
 from random import randint
 
 from requests import request
-from odoo.addons.de_school.controllers.notificacion_controller import NotificacionController # type: ignore
+from odoo.addons.modulo_escolar.controllers.notificacion_controller import NotificacionController # type: ignore
 from odoo import api, fields, models
 
 
