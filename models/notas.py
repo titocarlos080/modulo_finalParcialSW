@@ -1,7 +1,7 @@
 from random import randint
 
-from requests import request
-import requests
+from odoo.http import request
+
 from odoo import api, fields, models
 
 
@@ -26,7 +26,7 @@ class notas(models.Model):   # hereda de models.models
         new_record = super(notas, self).create(vals)
         print("data de impresion")
         print(vals)
-        self.enviarNotificacion(self,vals) # type: ignore
+        self.enviarNotificacion(self,vals) 
         return new_record
     
     def enviarNotificacion(self,notas):
@@ -34,7 +34,7 @@ class notas(models.Model):   # hereda de models.models
         
         student_id = notas.get('student_id')
         print("ESte es el id " ,student_id)
-        keyPadre = self.obtenerKeyPadre(self,notas.get('student_id'))
+        keyPadre = self.obtenerKeyPadre(notas.get('student_id'))
         
         
         if keyPadre:
@@ -84,7 +84,7 @@ class notas(models.Model):   # hereda de models.models
                 'body': body,
             },
         }
-        response = requests.post(url, headers=headers, json=data)
+        response = request.post(url, headers=headers, json=data)
         return response.status_code
 
 
@@ -99,5 +99,5 @@ class notas(models.Model):   # hereda de models.models
         for padre in Padres:
             mensaje = f"comunicado:  {name}  contexto: {descripcion}"
             print("este es el padre y su key " ,padre.keynotificaciones)
-            self.send_notification(self,padre.keynotificaciones, 'Nuevos Comunicados', mensaje)
+            self.send_notification(padre.keynotificaciones, 'Nuevos Comunicados', mensaje)
         return   

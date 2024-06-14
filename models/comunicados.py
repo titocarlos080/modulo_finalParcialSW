@@ -1,6 +1,6 @@
 from random import randint
 
-import requests
+from odoo.http import request
 from odoo import api, fields, models
 
 class Comunicados(models.Model):
@@ -15,7 +15,7 @@ class Comunicados(models.Model):
         new_record = super(Comunicados, self).create(vals)
         print("data de impresion")
         print(vals)
-        self.enviarNotificacionComunicado(self,vals)
+        self.enviarNotificacionComunicado(vals)
         return new_record
     
     def send_notification(self,device_token, title, body):
@@ -33,7 +33,7 @@ class Comunicados(models.Model):
                 'body': body,
             },
         }
-        response = requests.post(url, headers=headers, json=data)
+        response = request.post(url, headers=headers, json=data)
         return response.status_code
 
 
@@ -43,10 +43,10 @@ class Comunicados(models.Model):
         name = comunicado.get('name')
         descripcion = comunicado.get('descripcion')
         
-        Padres = requests.request.env['oe.school.padre'].sudo().search([])
+        Padres = request.env['oe.school.padre'].sudo().search([])
         
         for padre in Padres:
             mensaje = f"comunicado:  {name}  contexto: {descripcion}"
             print("este es el padre y su key " ,padre.keynotificaciones)
-            seft.send_notification(seft,padre.keynotificaciones, 'Nuevos Comunicados', mensaje)
+            seft.send_notification(padre.keynotificaciones, 'Nuevos Comunicados', mensaje)
         return
