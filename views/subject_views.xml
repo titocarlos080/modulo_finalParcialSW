@@ -90,12 +90,12 @@
                 </p>
             </field>
         </record>
-        
+<!--         
         <menuitem name="Subjects" id="menu_school_subjects"
                     parent="menu_school_courses" action="action_school_subject"
                     groups="group_school_user" sequence="3"/>
         
-        
+         -->
         
     </data>
 </odoo>

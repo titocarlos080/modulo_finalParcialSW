@@ -313,7 +313,7 @@
         </record>
 
         
-        <menuitem name="Apoderados" id="menu_school_students_parent" sequence="2" parent="menu_school_students" action="action_res_partner_parent" />
+        <!-- <menuitem name="Apoderados" id="menu_school_students_parent" sequence="2" parent="menu_school_students" action="action_res_partner_parent" /> -->
         
         
         <!-- Server Action to generate roll number -->
