@@ -11,6 +11,9 @@ access_school_padre_user,access.school.padre.user,model_oe_school_padre,group_sc
 access_school_comunicados,access.school.comunicados,model_oe_school_comunicados,,1,0,0,0
 access_school_comunicados_user,access.school.comunicados.user,model_oe_school_comunicados,group_school_user,1,1,1,1
 
+access_school_pagos,access.school.pagos,model_oe_school_pagos,,1,1,1,1
+access_school_pagos_user,access.school.pagos.user,model_oe_school_pagos,group_school_user,1,1,1,1
+
 access_school_inscripcion,access.school.inscripcion,model_oe_school_inscripcion,,1,0,0,0
 access_school_inscripcion_user,access.school.inscripcion.user,model_oe_school_inscripcion,group_school_user,1,1,1,1
 

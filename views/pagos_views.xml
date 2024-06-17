@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <record id="oe_school_view_form_pagos" model="ir.ui.view">
+        <field name="name">oe.school.pagos.form</field>
+        <field name="model">oe.school.pagos</field>
+        <field name="arch" type="xml">
+            <form string="pagos">
+                <sheet>
+                    <group>
+                        <field name="monto"/>
+                        <field name="descripcion"/>
+                        <field name="inscripcion_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+        </record>
+
+        <record id="oe_school_view_kanban_pagos" model="ir.ui.view">
+        <field name="name">oe.school.pagos.kanban</field>
+        <field name="model">oe.school.pagos</field>
+        <field name="arch" type="xml">
+            <kanban string="pagos">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{record.color}">
+                            <div class="oe_kanban_details">
+                                <strong><field name="monto"/></strong>
+                                <div><field name="descripcion"/></div>
+                                <div><field name="inscripcion_id"/></div>
+                               
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+        </record>
+
+        <record id="oe_school_view_tree_pagos" model="ir.ui.view">
+        <field name="name">oe.school.pagos.tree</field>
+        <field name="model">oe.school.pagos</field>
+        <field name="arch" type="xml">
+            <tree string="pago">
+                <field name="monto"/>
+                <field name="descripcion"/>
+                <field name="inscripcion_id"/>
+            </tree>
+        </field>
+        </record>
+
+        
+        <record id="action_hr_pagos_views" model="ir.actions.act_window">
+			<field name="name">pagos</field>
+			<field name="res_model">oe.school.pagos</field>
+            <field name="view_mode">kanban,tree,form</field>
+		  <field name="view_ids" 
+          eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('oe_school_view_kanban_pagos')}),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('oe_school_view_tree_pagos')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('oe_school_view_form_pagos')})]" />
+        </record>
+        
+        <menuitem name="Pagos" id="menu_school_pagos"
+			parent="menu_school" action="action_hr_pagos_views"
+			groups="group_school_user" />
+        
+    </data>
+</odoo>

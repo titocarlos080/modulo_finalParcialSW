@@ -19,3 +19,4 @@ from . import inscripcion
 from . import curso_materia_profesor_alumnos
 from . import notas
 from . import comunicados
+from . import pagos

@@ -36,6 +36,7 @@
         'views/materias_views.xml',
         'views/nivel_views.xml',
         'views/padre_views.xml',
+        'views/pagos_views.xml',
         'views/comunicados_views.xml',
         'views/inscripcion_views.xml',
         'views/cursomateriaprofesoralumnos_views.xml',

@@ -45,6 +45,12 @@
         groups="group_school_user"
     />
 
+    <menuitem name="Pagos" id="menu_school_pagos"
+        parent="menu_school"
+        sequence="90"
+        groups="group_school_user"
+    />
+
     <menuitem name="Configuraciones" id="menu_school_config"
         parent="menu_school"
         sequence="70"
