@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data>
-        <menuitem name="cursos" id="menu_school_config_classroom"
+        <menuitem name="Cursos" id="menu_school_config_classroom"
                     parent="menu_school_config" 
                     groups="group_school_manager" />
         
@@ -47,12 +47,12 @@
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Create a new grading type
+                    Crear un nuevo curso
                 </p>
             </field>
         </record>
         
-        <menuitem name="Aulas" id="menu_school_config_classroom_building"
+        <menuitem name="Cursos" id="menu_school_config_classroom_building"
                     parent="menu_school_config_classroom" action="action_school_building"
                     groups="group_school_manager" sequence="1"/>
         
@@ -99,7 +99,7 @@
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Create a new building room
+                    Crear una nueva sala
                 </p>
             </field>
         </record>
