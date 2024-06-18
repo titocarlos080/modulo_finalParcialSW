@@ -68,7 +68,7 @@
                 (0, 0, {'view_mode': 'form', 'view_id': ref('hr.view_employee_form')})]" />
 		</record>
         
-        <menuitem name="Teachers" id="menu_school_teachers_teachers"
+        <menuitem name="Profesores" id="menu_school_teachers_teachers"
 			parent="menu_school_teachers" action="action_hr_employees_teachers"
 			groups="group_school_user" />
         
