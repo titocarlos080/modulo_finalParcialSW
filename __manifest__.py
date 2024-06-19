@@ -1,20 +1,14 @@
-# -*- coding: utf-8 -*-
-###############################################################################
-# This module has been developed by Dynexcel to enhance the functionality and user experience of the system. Dynexcel, with its commitment to excellence, ensures that this module adheres to the highest standards of quality and performance. We appreciate feedback and suggestions to continually improve our offerings. For any queries or support, please reach out to the Dynexcel team.
-###############################################################################
 {
-    'name': "Openrol - School Core",
+    'name': "Modulo Colegio",
     'summary': """
-        Core Module of School Management System
+        Sistema de gestion de Colegios
     """,
     'description': """
         Transform educational administration with the Odoo School Management Core Module. This comprehensive solution centralizes all essential school operations, from student enrollment to staff management, ensuring a seamless and efficient educational environment.
     """,
-    'author': "Dynexcel",
-    'website': "https://dynexcel.com/",
-    'category': 'Sales/School/Industries',
-    'live_test_url': 'https://youtu.be/Idkqo8CpSAs',
-    'version': '17.0.0.3',
+    'author': "Grupo6",
+     'category': 'Sales/School/Industries',
+     'version': '17.0.0.3',
     'depends': ['base','hr'],
     'data': [
        'security/school_security.xml',
