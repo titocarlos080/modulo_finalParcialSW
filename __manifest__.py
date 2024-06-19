@@ -4,8 +4,8 @@
         Sistema de gestion de Colegios
     """,
     'description': """
-        Transform educational administration with the Odoo School Management Core Module. This comprehensive solution centralizes all essential school operations, from student enrollment to staff management, ensuring a seamless and efficient educational environment.
-    """,
+ Es un sistema de gestion de colegios en GRAL
+     """,
     'author': "Grupo6",
      'category': 'Sales/School/Industries',
      'version': '17.0.0.3',
